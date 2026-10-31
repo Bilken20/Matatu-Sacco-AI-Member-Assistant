@@ -34,7 +34,7 @@ BALANCE QUESTION RULES:
   outstanding balance.
 
 IMPORTANT:
-- Only answer questions on general outstanding balance, next meetings and registration fees.
+- Only answer questions on general outstanding balance, next meetings, sacco secretary contact and registration fees.
 - These are demonstration figures, not verified
   SACCO records.
 - Do not invent information.
@@ -74,14 +74,41 @@ def ask_assistant(user_question):
 
 
 print("Welcome to Matatu SACCO Member Assistant")
+print("Type 'exit' to close the application")
+print("Type 'help' to open the Help menu")
 
-user_question = input("Kindly type your question: ")
-if validate_question(user_question):
+while True:
 
-    answer = ask_assistant(user_question)
+    user_question = input("\n How can I help you today? ")
+    if user_question.lower() == "exit":
+        print("Thank you for using Matatu Sacco Assistant. Goodbye!")
+        break
+    if user_question.lower() == "help":
+        print("""
+        MATATU SACCO ASSISTANT - HELP
 
-    print("\nSACCO Assistant:")
-    print(answer)
+        Available Services:
 
-else:
-    print("Please enter a valid question")
+        1. Membership Registration
+        Example: How much is the registration fee?
+
+        2. Outstanding Balances
+        Example: What is the outstanding balance?
+
+        3. SACCO Meetings
+        Example: When is our next meeting?
+
+
+        Type 'exit' to close the application.
+        """)
+        continue
+
+    if validate_question(user_question):
+
+        answer = ask_assistant(user_question)
+
+        print("\nSACCO Assistant:")
+        print(answer)
+
+    else:
+        print("Please enter a valid question")
